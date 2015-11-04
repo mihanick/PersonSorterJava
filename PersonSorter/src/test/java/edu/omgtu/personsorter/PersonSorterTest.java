@@ -87,7 +87,7 @@ public class PersonSorterTest {
         for (int i = 0; i < students.size(); i++) {
             String expected = expectedList.get(i);
             String actual = students.get(i).Surname;
-            assertEquals("Не совпадает сортировка только по именам",
+            assertEquals("Не совпадает сортировка только по фамилиям",
                     expected, actual);
         }
     }
@@ -114,7 +114,7 @@ public class PersonSorterTest {
             String actual = students.get(i).Group + " "
                     + students.get(i).Name + " "
                     + students.get(i).Surname;
-            assertEquals("Не совпадает сортировка только по именам",
+            assertEquals("Не совпадает сортировка по группе, имени, фамилии",
                     expected, actual);
         }
     }

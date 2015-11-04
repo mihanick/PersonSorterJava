@@ -6,7 +6,9 @@
 package edu.omgtu.personsorter;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -20,9 +22,13 @@ public class PersonSorterTest {
     private List<String> readSampleFile(String inputFileName) throws Exception {
         List<String> result = new ArrayList<>();
 
-        // http://stackoverflow.com/questions/4716503/best-way-to-read-a-text-file-in-java
-        FileReader fr = new FileReader(inputFileName);
-        BufferedReader textReader = new BufferedReader(fr);
+        File file = new File(inputFileName);
+        String path = file.getAbsolutePath();
+ 
+        // http://www.mkyong.com/java/how-to-read-utf-8-encoded-data-from-a-file-java/
+        BufferedReader textReader = new BufferedReader(new InputStreamReader(
+                      new FileInputStream(path), "UTF8"));
+        
         try {
             String line = textReader.readLine();
             while (line != null) {
@@ -38,7 +44,7 @@ public class PersonSorterTest {
 
     @Test
     public void testPersonCollectionSortByName() throws Exception {
-        List<String> linesFromFile = readSampleFile("./group.txt");
+        List<String> linesFromFile = readSampleFile("group.txt");
         List<Person> students = new ArrayList<>();
         for (String line : linesFromFile) {
             students.add(new Person(line));
@@ -63,7 +69,7 @@ public class PersonSorterTest {
 
     @Test
     public void testPersonCollectionSortBySurname() throws Exception {
-        List<String> linesFromFile = readSampleFile("./group.txt");
+        List<String> linesFromFile = readSampleFile("group.txt");
         List<Person> students = new ArrayList<>();
         for (String line : linesFromFile) {
             students.add(new Person(line));
@@ -88,7 +94,7 @@ public class PersonSorterTest {
 
     @Test
     public void testPersonCollectionSortByGroupNameSurname() throws Exception {
-        List<String> linesFromFile = readSampleFile("./group.txt");
+        List<String> linesFromFile = readSampleFile("group.txt");
         List<Person> students = new ArrayList<>();
         for (String line : linesFromFile) {
             students.add(new Person(line));

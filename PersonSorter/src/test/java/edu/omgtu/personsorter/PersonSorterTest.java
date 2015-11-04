@@ -57,7 +57,7 @@ public class PersonSorterTest {
 
         Collections.sort(expectedList);
 
-        Collections.sort(students, new PersonComparatorBySurname());
+        Collections.sort(students, new PersonComparatorByName());
 
         for (int i = 0; i < students.size(); i++) {
             String expected = expectedList.get(i);
@@ -82,7 +82,7 @@ public class PersonSorterTest {
 
         Collections.sort(expectedList);
 
-        Collections.sort(students, new PersonComparatorByName());
+        Collections.sort(students, new PersonComparatorBySurname());
 
         for (int i = 0; i < students.size(); i++) {
             String expected = expectedList.get(i);

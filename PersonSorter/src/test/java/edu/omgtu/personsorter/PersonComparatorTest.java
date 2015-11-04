@@ -22,8 +22,8 @@ public class PersonComparatorTest {
         Person personLeft = new Person();
         Person personRight = new Person("Бунин Иван РН-231");
         PersonComparatorByName comparator = new PersonComparatorByName();
-        assertEquals("Не выполнено сравнение по имени с пустым Person",
-                -1, comparator.compare(personLeft, personRight));
+        assertTrue("Не выполнено сравнение по имени с пустым Person",
+                comparator.compare(personLeft, personRight) < 0);
 
     }
 
@@ -31,9 +31,10 @@ public class PersonComparatorTest {
     public void TestNameCompare() throws Exception {
         Person personLeft = new Person("Мандельштам Осип РН-231");
         Person personRight = new Person("Бунин Иван РН-231");
-        PersonComparatorByName comparator = new PersonComparatorByName();
-        assertEquals("Не выполнено сравнение по имени с равными группами",
-                1, comparator.compare(personLeft, personRight));
+        PersonComparatorByGroupNameSurname comparator
+                = new PersonComparatorByGroupNameSurname();
+        assertTrue("Не выполнено сравнение по имени с равными группами",
+                comparator.compare(personLeft, personRight) > 0);
     }
 
     @Test
@@ -42,8 +43,8 @@ public class PersonComparatorTest {
         Person personRight = new Person("Бунин Иван РН-131");
         PersonComparatorByGroupNameSurname comparator
                 = new PersonComparatorByGroupNameSurname();
-        assertEquals("Не выполнено полное сравнение с разными группами",
-                1, comparator.compare(personLeft, personRight));
+        assertTrue("Не выполнено полное сравнение с разными группами",
+                comparator.compare(personLeft, personRight) > 0);
     }
 
     @Test
@@ -52,8 +53,8 @@ public class PersonComparatorTest {
         Person personRight = new Person("Бунин Иван РН-231");
         PersonComparatorByGroupNameSurname comparator
                 = new PersonComparatorByGroupNameSurname();
-        assertEquals("Не выполнено полное сравнение с одинаковыми группами",
-                1, comparator.compare(personLeft, personRight));
+        assertTrue("Не выполнено полное сравнение с одинаковыми группами",
+                comparator.compare(personLeft, personRight) > 0);
     }
 
     @Test
@@ -62,7 +63,7 @@ public class PersonComparatorTest {
         Person personRight = new Person("Бунин Иван РН-231");
         PersonComparatorByGroupNameSurname comparator
                 = new PersonComparatorByGroupNameSurname();
-        assertEquals("Не выполнено полное сравнение с разными фамилиями",
-                1, comparator.compare(personLeft, personRight));
+        assertTrue("Не выполнено полное сравнение с разными фамилиями",
+                comparator.compare(personLeft, personRight) > 0);
     }
 }

@@ -26,9 +26,10 @@ public class PersonSorterTest {
         String path = file.getAbsolutePath();
  
         // http://www.mkyong.com/java/how-to-read-utf-8-encoded-data-from-a-file-java/
-        BufferedReader textReader = new BufferedReader(new InputStreamReader(
+        BufferedReader textReader;
+        textReader = new BufferedReader(new InputStreamReader(
                       new FileInputStream(path), "UTF8"));
-        
+
         try {
             String line = textReader.readLine();
             while (line != null) {

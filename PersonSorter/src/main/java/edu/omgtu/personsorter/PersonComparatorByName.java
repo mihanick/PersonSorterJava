@@ -14,9 +14,9 @@ import java.util.Comparator;
     public class PersonComparatorByName implements Comparator<Person>
     {
         @Override
-        public int compare(Person leftPerson, Person rightPerson) 
-        {
-            //TODO: Добавить реализацию сравнения по именам
-            return 0;
+        public int compare(Person leftPerson, Person rightPerson){
+            String str1=leftPerson.Name;
+            String str2=rightPerson.Name;
+            return str1.compareTo(str2);
         }
     }

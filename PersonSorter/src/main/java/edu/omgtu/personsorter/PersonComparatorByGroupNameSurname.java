@@ -15,7 +15,8 @@ public class PersonComparatorByGroupNameSurname implements Comparator<Person> {
 
     @Override
     public int compare(Person leftPerson, Person rightPerson) {
-        //TODO: Добавить реализацию сравнения по именам
-        return 0;
+        String str1=leftPerson.Name+leftPerson.Surname+leftPerson.Group;
+        String str2=rightPerson.Name+rightPerson.Surname+rightPerson.Group;
+        return str1.compareTo(str2);
     }
 }

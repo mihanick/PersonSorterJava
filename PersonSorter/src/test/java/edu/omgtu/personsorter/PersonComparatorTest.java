@@ -6,6 +6,8 @@
 package edu.omgtu.personsorter;
 
 import org.junit.Test;
+import org.junit.rules.TestName;
+
 import static org.junit.Assert.*;
 
 /**
@@ -14,8 +16,17 @@ import static org.junit.Assert.*;
  */
 public class PersonComparatorTest {
 
-    public PersonComparatorTest() {
+    public PersonComparatorTest() throws Exception {
     }
+
+    @Test
+    public void TestSurname() throws Exception {
+        Person personLeft = new Person("GGG GGG UUU-543");
+        Person personRight = new Person("Бунин Иван РН-291");
+        PersonComparatorBySurname comparator=new PersonComparatorBySurname();
+        assertTrue("выполнено сравнение",comparator.compare(personLeft,personRight)<0);
+    }
+
 
     @Test
     public void TestNameCompareNull() throws Exception {
@@ -53,7 +64,7 @@ public class PersonComparatorTest {
         Person personRight = new Person("Бунин Иван РН-231");
         PersonComparatorByGroupNameSurname comparator
                 = new PersonComparatorByGroupNameSurname();
-        assertTrue("Не выполнено полное сравнение с одинаковыми группами",
+         assertTrue("Не выполнено полное сравнение с одинаковыми группами",
                 comparator.compare(personLeft, personRight) > 0);
     }
 

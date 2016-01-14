@@ -16,7 +16,10 @@ import java.util.Comparator;
         @Override
         public int compare(Person leftPerson, Person rightPerson) 
         {
-            //TODO: Добавить реализацию сравнения по именам
+            String str1=leftPerson.Name;
+            String str2=rightPerson.Name;
+            return str1.compareTo(str2);
+
             return 0;
         }
     }
